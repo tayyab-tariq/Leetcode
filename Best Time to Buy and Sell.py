@@ -1,33 +1,22 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+
+        min_price = prices[0]
         profit = 0
-        
-        lowest = prices[0]
-        for price in prices:
-            if price < lowest:
-                lowest = price
-            
-            profit = max(profit, price - lowest)
 
+        for num in prices:
+            profit = max(profit, num - min_price)
+            min_price = min(min_price, num)
+        
         return profit
-
-
-
-
-# class Solution:
-#     def maxProfit(self, prices: List[int]) -> int:
-#         maximum = 0
         
-#         while(len(prices)>1):
-#             min_value = min(prices)
-#             min_index = prices.index(min_value)
+        # profit = 0
+        
+        # lowest = prices[0]
+        # for price in prices:
+        #     if price < lowest:
+        #         lowest = price
             
-#             arr = prices[min_index:len(prices)]
-#             max_value = max(arr)
-            
-#             prices = prices[0:min_index]
+        #     profit = max(profit, price - lowest)
 
-#             if maximum < max_value-min_value:
-#                 maximum = max_value-min_value
-            
-#         return maximum
+        # return profit
