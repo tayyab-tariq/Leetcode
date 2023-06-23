@@ -31,3 +31,31 @@ class Solution:
             return s[l : r+1]
         else:
             return ''
+        
+        # charS1 = Counter(t)
+        # charS2 = {} 
+        # count, left, right = 0, 0, 0
+        # min_char, substr = len(s), ''
+        # while right < len(s):
+        #     if charS1.get(s[right], 0):
+        #         if charS1.get(s[right], 0) > charS2.get(s[right], 0):
+        #             count += 1
+        #         charS2[s[right]] = 1 + charS2.get(s[right], 0)
+            
+        #     if count == len(t):
+                
+        #         while left <= right and count == len(t):
+        #             if (right - left + 1) <= min_char:
+        #                 min_char =  right - left + 1
+        #                 substr = s[left : right+1]
+
+        #             if charS2.get(s[left],0):
+        #                 charS2[s[left]] -= 1
+        #                 if charS1.get(s[left], 0) > charS2.get(s[left], 0):
+        #                     count -= 1
+        #                     left += 1
+        #                     break 
+        #             left += 1
+        #     right += 1
+
+        # return substr
