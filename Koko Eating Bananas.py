@@ -1,32 +1,17 @@
-import math
-
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int: 
-        left, right = 1, max(piles)
-        min_speed = max(piles)
+        curr_speed = ceil(sum(piles) / h)
+        big_piles = [pile for pile in piles if pile > curr_speed]
+        curr_turns = [ceil(pile / curr_speed) for pile in big_piles]
+        curr_num_hours = (len(piles) - len(big_piles)) + sum(curr_turns)
 
-        def chkSpeed(piles, speed, h):
-            count = 0
-            for num in piles:
-                if speed > num:
-                    count += 1
-                else:
-                    val = math.ceil(num / speed)
-                    count += val
-
-            if count <= h:
-                return True
-            else:
-                return False
-
-
-        while left <= right:
-            mid = (left + right) // 2
-            chk = chkSpeed(piles, mid, h)
-            if chk:
-                min_speed = min(mid, min_speed)
-                right = mid - 1
-            else:
-                left = mid + 1
-            
-        return min_speed
+        while curr_num_hours > h:
+            next_speed = float("inf")
+            for i in range(len(big_piles)):
+                if curr_turns[i] > 1:
+                    next_speed = min(next_speed, ceil(big_piles[i] / (curr_turns[i] - 1)))
+            curr_speed = next_speed
+           
+            curr_turns = [ceil(pile / curr_speed) for pile in big_piles]
+            curr_num_hours = (len(piles) - len(big_piles)) + sum(curr_turns)
+        return curr_speed
