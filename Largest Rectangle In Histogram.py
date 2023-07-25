@@ -19,4 +19,15 @@ class Solution:
         
         return area
 
+
+        # min_height, area = heights[0], 0
+        # stack = []
+        # for i in range(len(heights)):
+        #     min_height = heights[i]
+        #     for j in range(i,len(heights)):
+        #         min_height = min(heights[j], min_height)
+        #         area = max(area, abs(j-i+1)*min_height)
+        
+        # return area
+
             
