@@ -32,10 +32,6 @@ class TimeMap:
                     else:
                         right = mid - 1  
                 
-                # if timestamp == 15:
-                #     print(nums[right][0], nums[right][1], '     ', nums[left][0], nums[left][1])
-                #     print()
-                
                 if nums[right][1] <= timestamp: 
                     return nums[right][0]
                 else:
