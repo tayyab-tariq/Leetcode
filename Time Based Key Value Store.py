@@ -11,8 +11,6 @@ class TimeMap:
             self.time_map[key].append((value, timestamp))
 
     def get(self, key: str, timestamp: int) -> str:
-        # print(self.time_map)
-        # print(key, timestamp)
         if self.time_map.get(key, 0):
             nums = self.time_map[key]
             if timestamp == 15:
@@ -27,8 +25,6 @@ class TimeMap:
 
                 while left <= right:
                     mid = (left+right) // 2
-                    # if timestamp == 15:
-                        # print(mid, nums[mid], nums[mid][1], nums[left][1],left, right)
                     if nums[mid][1] == timestamp:
                         return nums[mid][0] 
                     elif nums[mid][1] < timestamp:
