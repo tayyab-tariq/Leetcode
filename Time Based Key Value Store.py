@@ -13,9 +13,6 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         if self.time_map.get(key, 0):
             nums = self.time_map[key]
-            if timestamp == 15:
-                print(self.time_map[key])
-
             left, right = 0, len(nums)-1
             if left != right:
                 if timestamp < nums[left][1]:
