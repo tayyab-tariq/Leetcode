@@ -16,3 +16,22 @@ class Solution:
             fast = fast.next.next
         
         
+        prev = slow.next = None
+        slow = slow.next
+        while second:
+            temp = slow.next
+            slow.next = prev
+            prev = slow
+            slow = temp
+
+        print(head)
+        print(prev)
+        # curr = head
+        
+        # while prev:
+        #     temp, temp2 = curr.next, prev.next
+        #     curr.next = prev
+        #     prev.next = curr
+        #     curr, prev = temp, temp2
+        
+        return head
