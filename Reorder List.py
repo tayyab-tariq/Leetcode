@@ -9,19 +9,28 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         slow, fast = head, head.next
+
         while slow:
             if not fast or not fast.next:
                 break
-            slow = slow.next
             fast = fast.next.next
+            slow = slow.next
         
-        
+        second = slow.next
         prev = slow.next = None
-        slow = slow.next
+
         while second:
-            temp = slow.next
-            slow.next = prev
-            prev = slow
-            slow = temp
+            temp = second.next
+            second.next = prev
+            prev = second
+            second = temp
         
+        curr = head
+        second = prev
+        while second:
+            temp, temp1 = curr.next, second.next
+            curr.next = second
+            second.next = temp
+            curr, second = temp, temp1
+
         return head
