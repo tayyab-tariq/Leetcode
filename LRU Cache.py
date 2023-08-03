@@ -1,16 +1,16 @@
 class ListNode:
-    def __init__(self, val: int, next: ListNode):
-        self.val = val
+    def __init__(self, key:int, val: int, next = None):
+        self.obj = {}
+        self.obj[key] = val
         self.next = next
-
-
 
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.count = 0
-        self.head = ListNode(0)
+        self.head = ListNode(-1, 0)
+        print(self.head.obj)
         
     def get(self, key: int) -> int:
         return -1
@@ -20,7 +20,7 @@ class LRUCache:
         temp = self.head
         while temp.next:
             temp = temp.next
-        temp.next = val
+        temp.next = ListNode(key, value)
 
         self.count += 1    
 
