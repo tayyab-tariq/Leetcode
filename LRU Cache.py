@@ -17,14 +17,20 @@ def __init__(self, capacity):
 def get(self, key):
     if key in self.dic:
         n = self.dic[key]
+        self._remove(n)
+        self._add(n)
         return n.val
     return -1
 
-def set(self, key, value):])
+def set(self, key, value):
+    if key in self.dic:
+        self._remove(self.dic[key])
     n = Node(key, value)
+    self._add(n)
     self.dic[key] = n
     if len(self.dic) > self.capacity:
         n = self.head.next
+        self._remove(n)
         del self.dic[n.key]
 
 def _remove(self, node):
