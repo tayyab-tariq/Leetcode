@@ -1,57 +1,28 @@
-class ListNode:
-    def __init__(self, key:int, val: int, next = None):
-        self.obj = {}
-        self.obj[key] = val
-        self.next = next
+class Node:
+def __init__(self, k, v):
+    self.key = k
+    self.val = v
+    self.prev = None
+    self.next = None
 
 class LRUCache:
+def __init__(self, capacity):
+    self.capacity = capacity
+    self.dic = dict()
+    self.head = Node(0, 0)
+    self.tail = Node(0, 0)
+    self.head.next = self.tail
+    self.tail.prev = self.head
 
-    def __init__(self, capacity: int):
-        self.capacity = capacity
-        self.count = 0
-        self.head = ListNode(-1, 0)
-        
-    def get(self, key: int) -> int:
-        # curr = self.head
-        # while curr:
-        #     print(curr.obj, key)
-        #     curr = curr.next
-        # print()
+def get(self, key):
+    if key in self.dic:
+        n = self.dic[key]
+        return n.val
+    return -1
 
-        temp = self.head
-        prev = None
-        while temp:
-            if temp.obj.get(key,0):
-                val = temp.obj.get(key,0)
-                prev.next = temp.next
-                tmp2 = self.head.next
-                self.head.next = temp
-                temp.next = tmp2
-                return val
-            prev = temp
-            temp = temp.next
-        return -1
-
-    def put(self, key: int, value: int) -> None:
-        if self.count >= self.capacity:
-            temp = self.head
-            prev = None
-            while temp.next:
-                prev = temp
-                temp = temp.next
-            prev.next = None
-            temp = self.head.next
-
-            self.head.next = ListNode(key, value, temp)
-        else:
-            temp = self.head
-            while temp.next:
-                temp = temp.next
-            temp.next = ListNode(key, value)
-
-            self.count += 1 
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+def set(self, key, value):])
+    n = Node(key, value)
+    self.dic[key] = n
+    if len(self.dic) > self.capacity:
+        n = self.head.next
+        del self.dic[n.key]
