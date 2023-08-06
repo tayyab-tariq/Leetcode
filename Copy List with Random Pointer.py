@@ -17,3 +17,10 @@ class Solution:
             oldToCopy[cur] = copy
             cur = cur.next
         cur = head
+
+        while cur:
+            copy = oldToCopy[cur]
+            copy.next = oldToCopy[cur.next]
+            copy.random = oldToCopy[cur.random]
+            cur = cur.next
+        return oldToCopy[head]
