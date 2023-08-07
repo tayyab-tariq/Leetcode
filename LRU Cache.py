@@ -16,12 +16,26 @@ class LRUCache:
         self.tail.prev = self.head
     
     def get(self, key):
+        if key in self.dict.keys():
+            node = self.dict[key]
+            self._remove(node)
+            self._add(node)
+            return node.val
         return -1
     
     def put(self, key, value):
         node = Node(key, value)
+        if key in self.dict.keys():
+            self._remove(self.dict[key])
 
-    
+        self._add(node)
+        self.dict[key] = node
+
+        if len(self.dict) > self.capacity:
+            temp = self.head.next
+            self._remove(temp)
+            del self.dict[temp.key]
+        
     def _remove(self, node):
         p = node.prev
         n = node.next
