@@ -22,7 +22,7 @@ def get(self, key):
         return n.val
     return -1
 
-def set(self, key, value):
+def put(self, key, value):
     if key in self.dic:
         self._remove(self.dic[key])
     n = Node(key, value)
@@ -32,6 +32,7 @@ def set(self, key, value):
         n = self.head.next
         self._remove(n)
         del self.dic[n.key]
+
 
 def _remove(self, node):
     p = node.prev
