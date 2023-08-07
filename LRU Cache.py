@@ -20,3 +20,17 @@ class LRUCache:
     
     def put(self, key, value):
         node = Node(key, value)
+
+    
+    def _remove(self, node):
+        p = node.prev
+        n = node.next
+        p.next = n
+        n.prev = p
+    
+    def _add(self, node):
+        p = self.tail.prev
+        p.next = node
+        node.prev = p
+        self.tail.prev = node
+        node.next = self.tail
