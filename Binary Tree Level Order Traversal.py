@@ -7,3 +7,8 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return root
+        queue = []
+        return_list = []
+        queue.append(root)
