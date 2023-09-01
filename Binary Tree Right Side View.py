@@ -7,29 +7,27 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        right = self.rightSideView(root.right)
-        left = self.rightSideView(root.left)
-        return [root.val] + right + left[len(right):]
+        values = []
 
+        def dfs(root, level):
+            if not root:
+                return None
+            
+            if len(values) < level:
+                values.append(root.val)
 
+            right = dfs(root.right, level+1)
+            left = dfs(root.left, level+1)
 
+        if root:
+            values.append(root.val)
+            dfs(root, 1)
 
-        # res = []
-        # q = collections.deque()
-        # if root:
-        #     q.append(root)
+        return values
+        
+        # if not root:
+        #     return []
+        # right = self.rightSideView(root.right)
+        # left = self.rightSideView(root.left)
+        # return [root.val] + right + left[len(right):]
 
-        # while q:
-        #     val = []
-
-        #     for i in range(len(q)):
-        #         node = q.popleft()
-        #         val.append(node.val)
-        #         if node.left:
-        #             q.append(node.left)
-        #         if node.right:
-        #             q.append(node.right)
-        #     res.append(val)
-        # return res
