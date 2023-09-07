@@ -28,4 +28,20 @@ class Solution:
 
         # return res[-1]
 
+        res = []
+        def inOrder(root):
+            if not root:
+                return
+
+            inOrder(root.left)
+
+            if len(res) == k:
+                return
+            res.append(root.val)
+
+            inOrder(root.right)
+        
+        inOrder(root)
+        return res[-1]
+
 
